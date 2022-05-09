@@ -1,0 +1,16 @@
+<!-- <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> -->
+<table class="details">
+    <h3>פרטי הנושא</h3>
+    <p><strong>קוד מזהה</strong> - {{objIssue.Issue.ID}}</p>
+    <p><strong>שם הנושא</strong> - {{objIssue.Issue.Name}}</p>
+
+  
+    <h4>תתי נושא</h4>
+    <div *ngFor="let subIs of objIssue.SubIssue">
+        <!-- <img src="assets/id.png"> -->
+        <p><strong>קוד</strong> - {{subIs.ID}}</p>
+        <p><strong>שם</strong> - {{subIs.Name}}</p>
+        <hr>
+    </div>
+
+</table>

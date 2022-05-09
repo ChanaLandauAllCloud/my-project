@@ -1,0 +1,35 @@
+<h1 id='title'>קטגוריות</h1>
+<div class="search-wrapper">
+    <input class="search-input" type="text" name="" id="" [(ngModel)]="freeSearchValue" (blur)="checkFreeSearch()">
+    <mat-icon class="search-icon" (click)="search()" matPrefix>search</mat-icon>
+</div>
+<div class="table-wrapper">
+    <table *ngIf="!isSearch">
+        <thead>
+            <tr>
+                <th>קוד מזהה  </th>                             
+                <th>שם הנושא</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let item of objectIssue">
+            <tr>
+                <td><a routerLink = "/hello{{item.Issue.ID}}" (click)="RouterLinkClick(item.Issue.ID)" > {{item.Issue.ID}}</a></td>
+                <td>{{item.Issue.Name}}</td>
+                <td>
+                    <mat-icon class="icon" (click)="openMoreInfoModal(item);">add</mat-icon>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div *ngIf="isSearch">
+    <h1 class="not-found-title" *ngIf="filterObjectIssue.length==0">No Data Found</h1>
+    <div *ngIf="filterObjectIssue.length > 0" class="search-result-wrapper">
+        <div *ngFor="let item of filterObjectIssue " class="search-result-div">
+            <h3>{{item.Issue.ID}}</h3>
+            <h5>{{item.Issue.Name}}</h5>
+        </div>
+    </div>
+</div>
